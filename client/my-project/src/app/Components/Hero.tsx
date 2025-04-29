@@ -12,7 +12,7 @@ export default function Hero({ onDonateClick }: HeroProps) {
       />
       <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative z-10 text-center text-white">
-        <h1 className="text-4xl md:text-6xl w-[95%] font-bold ml-5 mb-4 leading-relaxed">
+        <h1 className="text-4xl md:text-6xl w-[95%] font-bold ml-3 mb-4 leading-relaxed">
           Empowering Change, One Step at a Time
         </h1>
 

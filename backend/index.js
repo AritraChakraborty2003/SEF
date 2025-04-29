@@ -8,6 +8,7 @@ import galleryRouter from "./Routes/GalleryRoute.js";
 import serviceRouter from "./Routes/ServiceRoute.js";
 import teamRouter from "./Routes/TeamRoute.js";
 import generalRouter from "./Routes/generalRouter.js";
+import aboutRouter from "./Routes/AboutRoute.js";
 
 /*--- To acess .env values ---*/
 dotenv.config();
@@ -31,10 +32,11 @@ connectDB(MONGDB_URI);
 /*--- The api routes --- */
 app.use("/", generalRouter);
 app.use("/api/v1", generalRouter);
-app.use("/api/v1/contact", contactRouter);
-app.use("/api/v1/gallery", galleryRouter);
+app.use("/api/v1/abouts", aboutRouter);
+app.use("/api/v1/contacts", contactRouter);
+app.use("/api/v1/galleries", galleryRouter);
 app.use("/api/v1/services", serviceRouter);
-app.use("/api/v1/team", teamRouter);
+app.use("/api/v1/teams", teamRouter);
 /*--- Initial Listening PORT of app --- */
 app.listen(PORT, () => {
   console.log(`Backend connected at ${PORT}`);

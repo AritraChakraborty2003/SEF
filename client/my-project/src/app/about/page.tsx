@@ -6,6 +6,7 @@ import { useState } from "react";
 import ContactUs from "../Components/ContactUs";
 import NarrativeInfographic from "../Components/NarrativeInfograhic";
 import ServicesSection from "../Components/ServicesSection";
+import ScrollAnimate from "../Components/General/Animate";
 
 // HERO SECTION COMPONENT
 function AboutHero() {
@@ -35,32 +36,38 @@ function VisionMission() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
         {/* Left: Image */}
         <div className="md:w-1/2 w-full flex justify-center">
-          <img
-            src="/images/vm.png" // Place your vision/mission image here
-            alt="Vision and Mission"
-            className="rounded-xl shadow-lg w-full max-w-md object-cover"
-          />
+          <ScrollAnimate direction="left">
+            <img
+              src="/images/vm.png" // Place your vision/mission image here
+              alt="Vision and Mission"
+              className="rounded-xl shadow-lg w-full max-w-md object-cover"
+            />
+          </ScrollAnimate>
         </div>
         {/* Right: Text */}
         <div className="md:w-1/2 w-full">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-yellow-400">
-            Our Vision &amp; Mission
-          </h2>
-          <div className="mb-6">
-            <h3 className="text-2xl font-semibold text-black mb-2">Vision</h3>
-            <p className="text-lg text-gray-800">
-              To create a world where every child has access to quality
-              education, guided by passionate and well-equipped teachers.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-2xl font-semibold text-black mb-2">Mission</h3>
-            <p className="text-lg text-gray-800">
-              We empower educators with innovative training, resources, and
-              support, enabling them to inspire lifelong learning and positive
-              change in their communities.
-            </p>
-          </div>
+          <ScrollAnimate direction="right">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-yellow-400">
+              Our Vision &amp; Mission
+            </h2>
+            <div className="mb-6">
+              <h3 className="text-2xl font-semibold text-black mb-2">Vision</h3>
+              <p className="text-lg text-gray-800">
+                To create a world where every child has access to quality
+                education, guided by passionate and well-equipped teachers.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-2xl font-semibold text-black mb-2">
+                Mission
+              </h3>
+              <p className="text-lg text-gray-800">
+                We empower educators with innovative training, resources, and
+                support, enabling them to inspire lifelong learning and positive
+                change in their communities.
+              </p>
+            </div>
+          </ScrollAnimate>
         </div>
       </div>
     </section>

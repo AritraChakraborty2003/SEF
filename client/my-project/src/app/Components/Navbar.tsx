@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { useAppContext } from "../AppContext/AppContext";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -15,6 +16,9 @@ interface NavbarProps {
 
 export default function Navbar({ onDonateClick }: NavbarProps) {
   const [open, setOpen] = useState(false);
+  const { abouts, services, teams, contact, galleries } = useAppContext();
+
+  console.log(galleries);
 
   return (
     <nav className="bg-yellow-400 text-black shadow-md sticky top-0 z-50">

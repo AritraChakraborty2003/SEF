@@ -4,6 +4,7 @@ import {
   FaBookOpen,
   FaGlobe,
 } from "react-icons/fa";
+import ScrollAnimate from "./General/Animate";
 
 const servicesData = [
   {
@@ -23,7 +24,7 @@ const servicesData = [
   {
     id: 3,
     icon: <FaBookOpen className="text-yellow-400 w-12 h-12" />,
-    title: "Curriculum Design",
+    title: "Curriculum Design & Development",
     description:
       "Developing inclusive curricula tailored to diverse learning needs and environments.",
   },
@@ -36,18 +37,33 @@ const servicesData = [
   },
 ];
 
+const delay = [0.8, 0.6, 0.4, 0.2];
+
 export default function ServicesSection() {
   return (
-    <section className="bg-white py-20 px-6">
+    <section className="bg-white pb-10 px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-16 text-yellow-400">
           Our Services
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {servicesData.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+            {servicesData.map((service, index) => (
+              <ScrollAnimate delay={delay[index % 4]} direction="left">
+                <ServiceCard key={service.id} service={service} />
+              </ScrollAnimate>
+            ))}
+          </div>
+        </div>
+        <div className="block lg:hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+            {servicesData.map((service, index) => (
+              <ScrollAnimate direction="left">
+                <ServiceCard key={service.id} service={service} />
+              </ScrollAnimate>
+            ))}
+          </div>
         </div>
       </div>
     </section>
