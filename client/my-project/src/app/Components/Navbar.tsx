@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 
 const navLinks = [
@@ -19,7 +20,14 @@ export default function Navbar({ onDonateClick }: NavbarProps) {
     <nav className="bg-yellow-400 text-black shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
         {/* Left: Logo/Name */}
-        <div className="font-bold text-2xl flex items-center h-16">SEF</div>
+        <div className="font-bold text-2xl flex items-center h-16">
+          <Image
+            src={"/images/logoFinal.png"}
+            alt="SEF Logo"
+            height={50}
+            width={60}
+          />
+        </div>
         {/* Right: Nav links (desktop) */}
         <div className="hidden md:flex items-center space-x-6 h-16">
           {navLinks.map((link) => (
