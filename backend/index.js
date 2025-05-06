@@ -9,6 +9,7 @@ import serviceRouter from "./Routes/ServiceRoute.js";
 import teamRouter from "./Routes/TeamRoute.js";
 import generalRouter from "./Routes/generalRouter.js";
 import aboutRouter from "./Routes/AboutRoute.js";
+import adminRouter from "./Routes/AdminRoutes.js";
 
 /*--- To acess .env values ---*/
 dotenv.config();
@@ -21,7 +22,13 @@ const PORT = process.env.PORT;
 const MONGDB_URI = process.env.MONGODB_URI;
 
 /*--- Middlewares----*/
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL, // e.g., http://localhost:3000
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 app.use(express.json());
 app.use(express.static("uploads"));
 app.use(cookieParser());
@@ -37,6 +44,7 @@ app.use("/api/v1/contacts", contactRouter);
 app.use("/api/v1/galleries", galleryRouter);
 app.use("/api/v1/services", serviceRouter);
 app.use("/api/v1/teams", teamRouter);
+app.use("/api/v1/admin", adminRouter);
 /*--- Initial Listening PORT of app --- */
 app.listen(PORT, () => {
   console.log(`Backend connected at ${PORT}`);

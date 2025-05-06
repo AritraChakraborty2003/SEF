@@ -34,11 +34,11 @@ const Loader = () => {
       try {
         const [abouts, services, galleries, teams, contact] = await Promise.all(
           [
-            axios.get(`${API_BASE_URL}/api/v1/abouts`),
-            axios.get(`${API_BASE_URL}/api/v1/services`),
-            axios.get(`${API_BASE_URL}/api/v1/galleries`),
-            axios.get(`${API_BASE_URL}/api/v1/teams`),
-            axios.get(`${API_BASE_URL}/api/v1/contacts`),
+            axios.get(`${API_BASE_URL}api/v1/abouts`),
+            axios.get(`${API_BASE_URL}api/v1/services`),
+            axios.get(`${API_BASE_URL}api/v1/galleries`),
+            axios.get(`${API_BASE_URL}api/v1/teams`),
+            axios.get(`${API_BASE_URL}api/v1/contacts`),
           ]
         );
 

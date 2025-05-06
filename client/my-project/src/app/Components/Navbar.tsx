@@ -19,7 +19,9 @@ export default function Navbar({ onDonateClick }: NavbarProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { abouts, services, teams, contact, galleries } = useAppContext();
 
-  console.log(galleries);
+  console.log("galleries:", galleries);
+  console.log("abouts:", abouts);
+  console.log("services:", services);
 
   return (
     <nav className="bg-yellow-400 text-black shadow-md sticky top-0 z-50">

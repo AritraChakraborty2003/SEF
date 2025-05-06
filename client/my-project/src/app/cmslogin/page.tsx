@@ -4,18 +4,37 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-
+import axios from "axios";
 const Page = () => {
   const [showDonate, setShowDonate] = useState(false);
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    if (email === "admin@example.com" && password === "admin") {
-      router.push("/dashboard");
-    } else {
-      alert("Incorrect email or password!");
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL_TEST}api/v1/admin/login`,
+        { email, password },
+        {
+          withCredentials: true, // allows sending/receiving cookies
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (res.status === 200) {
+        router.push("/cmsdashboard"); // or your protected route
+      }
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        console.error("Axios error:", err.response?.data || err.message);
+      } else {
+        console.error("Unexpected error:", err);
+      }
     }
   };
 

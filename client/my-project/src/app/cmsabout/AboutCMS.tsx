@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 type AboutForm = {
   image: File | null;
@@ -154,10 +155,12 @@ const AboutCMS = () => {
               key={a.type}
               className="p-4 border rounded flex items-center gap-4"
             >
-              <img
+              <Image
                 src={`${process.env.NEXT_PUBLIC_API_URL_TEST}uploads/${a.image}`}
                 alt={a.type}
-                className="w-24 h-24 object-cover border rounded"
+                width={96} // Adjust width as needed
+                height={96} // Adjust height as needed
+                className="object-cover border rounded"
               />
               <div>
                 <h4 className="font-bold">{a.type}</h4>

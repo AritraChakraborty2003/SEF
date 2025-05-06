@@ -2,19 +2,29 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface About {
-  [key: string]: any;
+  id: string;
+  title: string;
+  description: string;
 }
 interface Service {
-  [key: string]: any;
+  id: string;
+  name: string;
+  details: string;
 }
 interface Gallery {
-  [key: string]: any;
+  id: string;
+  imageUrl: string;
+  caption: string;
 }
 interface Team {
-  [key: string]: any;
+  id: string;
+  name: string;
+  role: string;
 }
 interface Contact {
-  [key: string]: any;
+  email: string;
+  phone: string;
+  address: string;
 }
 
 interface AppContextType {
