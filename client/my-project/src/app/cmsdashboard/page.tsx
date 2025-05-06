@@ -5,11 +5,11 @@ import Card from "./Card";
 
 export default function Page() {
   const cards = [
-    { title: "About", link: "/manage?section=about" },
-    { title: "Services", link: "/manage?section=services" },
-    { title: "Gallery", link: "/manage?section=gallery" },
-    { title: "Contact", link: "/manage?section=contact" },
-    { title: "Teams", link: "/manage?section=teams" }, // ➡️ New Teams card added
+    { title: "About", link: "/cmsabout" },
+    { title: "Services", link: "/cmsservices" },
+    { title: "Gallery", link: "/cmsgallery" },
+    { title: "Contact", link: "/cmscontact" },
+    { title: "Teams", link: "/cmsteams" }, // ➡️ New Teams card added
   ];
 
   return (

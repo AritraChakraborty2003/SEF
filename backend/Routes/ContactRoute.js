@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createOrUpdateContact,
+  deleteContact,
   getContact,
 } from "../Controller/ContactController.js";
 
@@ -11,5 +12,7 @@ contactRouter.post("/", createOrUpdateContact);
 
 // Get Contact
 contactRouter.get("/", getContact);
+
+contactRouter.delete("/", deleteContact);
 
 export default contactRouter;

@@ -22,3 +22,16 @@ export const getContact = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// Delete contact
+export const deleteContact = async (req, res) => {
+  try {
+    const result = await Contact.deleteOne({});
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: "No contact record to delete" });
+    }
+    res.json({ message: "Contact information deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

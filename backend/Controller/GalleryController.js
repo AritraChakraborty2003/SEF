@@ -3,7 +3,10 @@ import { Gallery } from "../Models/Gallery.js";
 // Create Gallery
 export const createGallery = async (req, res) => {
   try {
-    const gallery = await Gallery.create(req.body);
+    const image = req.file.filename;
+    const { title, desc } = req.body;
+    const gallery = await new Gallery({ title, image, desc });
+    gallery.save();
     res.status(201).json(gallery);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -20,17 +23,32 @@ export const getAllGalleries = async (req, res) => {
   }
 };
 
-// Update Gallery by title
 export const updateGalleryByTitle = async (req, res) => {
   try {
+    const updateFields = {};
+
+    // Append body fields
+    for (const key in req.body) {
+      if (req.body[key] !== undefined && req.body[key] !== "") {
+        updateFields[key] = req.body[key];
+      }
+    }
+
+    // Add file if uploaded
+    if (req.file && req.file.filename) {
+      updateFields.image = req.file.filename; // Important: match schema field
+    }
+
     const gallery = await Gallery.findOneAndUpdate(
       { title: req.params.title },
-      req.body,
+      { $set: updateFields },
       { new: true }
     );
+
     if (!gallery) {
       return res.status(404).json({ message: "Gallery not found" });
     }
+
     res.json(gallery);
   } catch (error) {
     res.status(400).json({ error: error.message });

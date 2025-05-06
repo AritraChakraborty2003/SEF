@@ -3,7 +3,15 @@ import { Service } from "../Models/Services.js";
 // Create Service
 export const createService = async (req, res) => {
   try {
-    const service = await Service.create(req.body);
+    const { topic, descr, maindescr } = req.body;
+    const icon = req.file.filename;
+    const service = await new Service({
+      icon,
+      topic,
+      descr,
+      maindescr,
+    });
+    service.save();
     res.status(201).json(service);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -23,14 +31,28 @@ export const getAllServices = async (req, res) => {
 // Update Service by topic
 export const updateServiceByTopic = async (req, res) => {
   try {
+    const updateFields = {};
+
+    for (const key in req.body) {
+      if (req.body[key] !== undefined && req.body[key] !== "") {
+        updateFields[key] = req.body[key];
+      }
+    }
+
+    if (req.file?.filename) {
+      updateFields.icon = req.file.filename;
+    }
+
     const service = await Service.findOneAndUpdate(
       { topic: req.params.topic },
-      req.body,
+      { $set: updateFields },
       { new: true }
     );
+
     if (!service) {
       return res.status(404).json({ message: "Service not found" });
     }
+
     res.json(service);
   } catch (error) {
     res.status(400).json({ error: error.message });
