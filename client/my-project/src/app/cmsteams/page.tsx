@@ -24,7 +24,7 @@ const Page = () => {
   return (
     <ProtectedRoute>
       <div>
-        <div className="min-h-screen bg-white">
+        <div className="bg-white">
           <nav className="bg-yellow-400 p-4 flex justify-between items-center">
             <h1 className="text-black text-2xl font-bold">CMS Dashboard</h1>
             <button

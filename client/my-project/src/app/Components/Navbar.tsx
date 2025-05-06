@@ -8,6 +8,7 @@ const navLinks = [
   { name: "About", href: "/about" },
   { name: "Team", href: "/team" },
   { name: "Services", href: "/services" },
+  { name: "Daycare", href: "https://daycare.swarananjani.org/" },
 ];
 
 interface NavbarProps {
