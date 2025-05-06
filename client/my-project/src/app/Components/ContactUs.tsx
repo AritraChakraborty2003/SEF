@@ -49,8 +49,8 @@ export default function ContactUs() {
 
         {/* Right Section (Form) */}
         <ScrollAnimate direction="right">
-          <div className="bg-white border-2 border-yellow-400  lg:p-10 rounded-2xl shadow-lg w-[90vw] p-2 lg:w-full">
-            <form className="space-y-6">
+          <div className="bg-white border-2 border-yellow-400  lg:p-10 rounded-2xl shadow-lg w-[90vw]  lg:w-full">
+            <form className="space-y-6 p-3">
               <div>
                 <label
                   className="block mb-2 text-gray-800 font-semibold"
